@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriela Aljure — Consultoría de IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f3ec;
+    --bg-alt: #efe8dc;
+    --ink: #1a1d1c;
+    --ink-soft: #3d4541;
+    --muted: #6b7470;
+    --accent: #0f4c4c;
+    --accent-hover: #0a3838;
+    --rule: #d9d1c1;
+    --font-serif: 'Fraunces', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 243, 236, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .toggles {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    border-radius: 2px;
+  }
+  .toggle-btn:hover { color: var(--ink); }
+  .toggle-btn.active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .toggle-sep {
+    color: var(--rule);
+    font-size: 10px;
+    user-select: none;
+  }
+
+  /* ---------- Layout ---------- */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: 72px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 90px 0 70px;
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 5.5vw, 56px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero-title .accent {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-title .num {
+    font-feature-settings: 'ss01';
+    font-variant-numeric: lining-nums;
+  }
+  .hero-sub {
+    font-size: 19px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 580px;
+    margin-bottom: 20px;
+  }
+  .hero-audience {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.2s, transform 0.1s;
+  }
+  .cta:hover { background: var(--accent-hover); }
+  .cta:active { transform: translateY(1px); }
+  .cta .arrow { transition: transform 0.2s; display: inline-block; }
+  .cta:hover .arrow { transform: translateX(4px); }
+  .cta-note {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---------- Sections ---------- */
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ---------- Examples ---------- */
+  .examples-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .example {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .example:last-child { border-bottom: 1px solid var(--rule); }
+  .example-role {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .example-title {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .example-desc {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ---------- About ---------- */
+  .about {
+    background: var(--bg-alt);
+    margin: 0 -24px;
+    padding: 72px 24px;
+  }
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--rule);
+    flex-shrink: 0;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .about-text p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--ink); font-weight: 500; }
+  @media (max-width: 520px) {
+    .about-grid { grid-template-columns: 1fr; gap: 20px; }
+    .about-photo { width: 110px; height: 110px; }
+  }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+  .price-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+  .price-row:last-child { border-bottom: 1px solid var(--rule); }
+  .price-row.featured { position: relative; }
+  .price-row.featured::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 28px;
+    width: 4px;
+    height: 24px;
+    background: var(--accent);
+  }
+  .price-name {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .price-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .price-amount {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .price-amount .unit {
+    font-size: 13px;
+    color: var(--muted);
+    font-variant-numeric: normal;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-weight: 400;
+  }
+  .price-free {
+    color: var(--ink);
+    font-style: italic;
+  }
+  .price-note {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta { padding: 90px 0 80px; }
+  .final-cta .section-title { max-width: 520px; }
+  .final-cta-sub {
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px 0 36px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    section { padding: 56px 0; }
+    .hero { padding: 60px 0 50px; }
+    .topbar-inner { padding: 12px 20px; gap: 12px; }
+    .container { padding: 0 20px; }
+    .about { margin: 0 -20px; padding: 56px 20px; }
+    .toggles { gap: 8px; }
+    .toggle-group { padding: 2px 6px; }
+    .toggle-btn { padding: 3px 4px; font-size: 11px; }
+    .brand { font-size: 14px; }
+    .price-row { grid-template-columns: 1fr; gap: 6px; }
+    .price-amount { text-align: left; }
+    .price-row.featured::before { left: -12px; }
+  }
+
+  /* ---------- Animation ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    section, .hero {
+      animation: fadeUp 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+    }
+    .hero { animation-delay: 0.05s; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ---------- Language visibility ---------- */
+  html[lang="es"] [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="es"] { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="brand">Gabriela Aljure</a>
+    <div class="toggles">
+      <div class="toggle-group" role="group" aria-label="Language">
+        <button class="toggle-btn active" data-toggle-lang="es" aria-pressed="true">ES</button>
+        <span class="toggle-sep">·</span>
+        <button class="toggle-btn" data-toggle-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <div class="toggle-group" role="group" aria-label="Currency">
+        <button class="toggle-btn active" data-currency="COP" aria-pressed="true">COP</button>
+        <span class="toggle-sep">·</span>
+        <button class="toggle-btn" data-currency="USD" aria-pressed="false">USD</button>
+        <span class="toggle-sep">·</span>
+        <button class="toggle-btn" data-currency="EUR" aria-pressed="false">EUR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SPANISH VERSION ============ -->
+<div data-lang="es">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">Consultoría de IA · 1 a 1</div>
+    <h1 class="hero-title">
+      Lo que hoy te toma <span class="accent">horas</span>, mañana te toma <span class="accent">minutos</span>.
+    </h1>
+    <p class="hero-sub">
+      Te guío para usar IA en tu trabajo — a tu ritmo, con tus casos reales, sin preguntas fuera de lugar. Hablamos, escogemos una tarea, la resolvemos juntos.
+    </p>
+    <p class="hero-audience">
+      Para abogados, terapeutas, consultores y profesionales que quieren resultados concretos, no un curso más.
+    </p>
+    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
+      Agendar llamada gratis
+      <span class="arrow">→</span>
+    </a>
+    <span class="cta-note">30 minutos, sin compromiso.</span>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">Lo que hago</div>
+    <h2 class="section-title">Problemas <em>reales</em>, resueltos contigo.</h2>
+    <div class="examples-grid">
+      <div class="example">
+        <div class="example-role">Abogado</div>
+        <div class="example-title">Revisar un contrato de 40 páginas en 15 minutos.</div>
+        <p class="example-desc">Qué herramienta usar (y por qué no ChatGPT para esto), cómo proteger los datos del cliente, y cómo obtener un resumen útil que puedas verificar.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Terapeuta</div>
+        <div class="example-title">Organizar tus notas de sesión sin comprometer la confidencialidad.</div>
+        <p class="example-desc">Qué opciones son seguras, cómo anonimizar antes de usar IA, y un flujo que te ahorra dos horas semanales.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Consultor</div>
+        <div class="example-title">Preparar propuestas a medida sin empezar de cero cada vez.</div>
+        <p class="example-desc">Una plantilla inteligente que se adapta a cada cliente, con tus expresiones y tu tono.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Contador · Administrador</div>
+        <div class="example-title">Analizar un Excel de 5.000 filas sin tablas dinámicas.</div>
+        <p class="example-desc">Preguntas en lenguaje normal y obtienes respuestas. Sin fórmulas complicadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-inner">
+      <div class="section-eyebrow">Sobre mí</div>
+      <h2 class="section-title">Me llaman cuando algo <em>no funciona</em>.</h2>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="photo.jpg" alt="Gabriela Aljure">
+        </div>
+        <div class="about-text">
+          <p>Soy <strong>Gabriela</strong>, científica de datos con 5+ años construyendo modelos de IA para empresas en Estados Unidos y Europa — T-Mobile, Verizon, entre otras. También he trabajado en teatro, moda y construcción. Sé traducir lo técnico sin jerga y sin condescendencia.</p>
+          <p>Trilingüe. Buena escuchando, mejor simplificando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">Precios</div>
+    <h2 class="section-title">Transparente. <em>Sin sorpresas.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-row">
+        <div>
+          <div class="price-name">Llamada diagnóstica</div>
+          <div class="price-desc">30 min. Identificamos tu problema y vemos si puedo ayudarte.</div>
+        </div>
+        <div class="price-amount price-free">Gratis</div>
+      </div>
+      <div class="price-row featured">
+        <div>
+          <div class="price-name">Sesión individual</div>
+          <div class="price-desc">90 min. Una tarea concreta, resuelta de principio a fin.</div>
+        </div>
+        <div class="price-amount" data-price="280000">280.000 COP</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Pack inicial</div>
+          <div class="price-desc">3 sesiones de 90 min. Para instalar un flujo completo que uses solo.</div>
+        </div>
+        <div class="price-amount" data-price="750000">750.000 COP</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Mentoría mensual</div>
+          <div class="price-desc">4 sesiones al mes + soporte por WhatsApp.</div>
+        </div>
+        <div class="price-amount" data-price="1100000">1.100.000 COP<span class="unit"> / mes</span></div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Proyecto a medida</div>
+          <div class="price-desc">Cotizamos después de la llamada diagnóstica.</div>
+        </div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">Desde 1.500.000 COP</div>
+      </div>
+    </div>
+    <p class="price-note">Facturo desde Colombia y Europa.</p>
+  </section>
+
+  <section class="final-cta container">
+    <h2 class="section-title">La llamada es <em>gratis</em>.</h2>
+    <p class="final-cta-sub">30 minutos, sin compromiso.</p>
+    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
+      Agendar mi llamada
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+</div>
+
+<!-- ============ ENGLISH VERSION ============ -->
+<div data-lang="en">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">AI Consulting · One-on-one</div>
+    <h1 class="hero-title">
+      Spend <span class="accent">30 minutes</span> with me. Get <span class="accent">hours back</span> every week.
+    </h1>
+    <p class="hero-sub">
+      Practical AI guidance for senior professionals. We pick one task from your actual work, and I show you exactly how to use AI to do it in a fraction of the time — with your files, your cases, your tools.
+    </p>
+    <p class="hero-audience">
+      For attorneys, advisors, therapists, and established professionals who want results, not another course.
+    </p>
+    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
+      Book a free call
+      <span class="arrow">→</span>
+    </a>
+    <span class="cta-note">30 minutes. No obligation.</span>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">What I do</div>
+    <h2 class="section-title">One <em>real</em> problem at a time.</h2>
+    <div class="examples-grid">
+      <div class="example">
+        <div class="example-role">Attorneys</div>
+        <div class="example-title">Review a 40-page contract in 15 minutes.</div>
+        <p class="example-desc">Which tool to use, how to handle client confidentiality, and how to get a summary you can actually rely on.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Therapists &amp; clinicians</div>
+        <div class="example-title">Session notes, organized — HIPAA-aware.</div>
+        <p class="example-desc">Which tools meet professional privacy standards, how to de-identify data, and a workflow that saves two hours a week.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Consultants &amp; advisors</div>
+        <div class="example-title">Tailored proposals without starting from scratch.</div>
+        <p class="example-desc">A smart template that adapts to each client, using your voice and your framework — not generic AI boilerplate.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Finance &amp; operations</div>
+        <div class="example-title">Query a 5,000-row spreadsheet in plain English.</div>
+        <p class="example-desc">Ask questions, spot outliers, generate reports. No pivot tables, no formulas to memorize.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-inner">
+      <div class="section-eyebrow">About me</div>
+      <h2 class="section-title">I'm who people call when <em>something's broken</em>.</h2>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="photo.jpg" alt="Gabriela Aljure">
+        </div>
+        <div class="about-text">
+          <p><strong>Gabriela Aljure</strong>. Senior data scientist, 5+ years of enterprise AI work with US clients including T-Mobile and Verizon. Also a former theater and fashion professional — which is why I can explain technical concepts without the jargon.</p>
+          <p>Trilingual. Direct. Based between Colombia and Europe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">Flat fees. <em>No surprises.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-row">
+        <div>
+          <div class="price-name">Discovery call</div>
+          <div class="price-desc">30 min. We identify the problem and decide if I'm the right fit.</div>
+        </div>
+        <div class="price-amount price-free">Free</div>
+      </div>
+      <div class="price-row featured">
+        <div>
+          <div class="price-name">Single session</div>
+          <div class="price-desc">90 min. One concrete task, solved end-to-end.</div>
+        </div>
+        <div class="price-amount" data-price="280000">280,000 COP</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Starter package</div>
+          <div class="price-desc">3 × 90 min sessions. A complete workflow you can run on your own.</div>
+        </div>
+        <div class="price-amount" data-price="750000">750,000 COP</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Monthly retainer</div>
+          <div class="price-desc">4 sessions/month plus messaging support between them.</div>
+        </div>
+        <div class="price-amount" data-price="1100000">1,100,000 COP<span class="unit"> / mo</span></div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Custom engagement</div>
+          <div class="price-desc">Quoted after the discovery call.</div>
+        </div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">From 1,500,000 COP</div>
+      </div>
+    </div>
+    <p class="price-note">Invoicing available from Colombia and Europe.</p>
+  </section>
+
+  <section class="final-cta container">
+    <h2 class="section-title">The call is <em>free</em>.</h2>
+    <p class="final-cta-sub">30 minutes. No pressure. If it isn't a fit, I'll say so first.</p>
+    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
+      Book my call
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Gabriela Pardo de Andrade Aljure</span>
+    <span data-footer-text>© 2026 · Consultoría independiente</span>
+  </div>
+</footer>
+
+<script>
+  // ========== Language toggle ==========
+  const langButtons = document.querySelectorAll('[data-toggle-lang]');
+  const footerText = document.querySelector('[data-footer-text]');
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    langButtons.forEach(b => {
+      const isActive = b.dataset.toggleLang === lang;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+    footerText.textContent = lang === 'en'
+      ? '© 2026 · Independent consultancy'
+      : '© 2026 · Consultoría independiente';
+    const activeCurrency = document.querySelector('[data-currency].active').dataset.currency;
+    updatePrices(activeCurrency);
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.toggleLang));
+  });
+
+  // ========== Currency toggle ==========
+  const rates = {
+    COP: 1,
+    USD: 1 / 4000,
+    EUR: 1 / 4300,
+  };
+  const symbols = { COP: 'COP', USD: 'USD', EUR: 'EUR' };
+
+  function formatPrice(copAmount, currency, lang) {
+    const converted = copAmount * rates[currency];
+    let formatted;
+    const locale = lang === 'es' ? 'es-CO' : 'en-US';
+    if (currency === 'COP') {
+      formatted = Math.round(converted).toLocaleString(locale);
+    } else {
+      const rounded = Math.round(converted / 5) * 5;
+      formatted = rounded.toLocaleString(locale);
+    }
+    return `${formatted} ${symbols[currency]}`;
+  }
+
+  // Update prices for BOTH language sections so switching currency works regardless of lang
+  function updatePrices(currency) {
+    ['es', 'en'].forEach(sectionLang => {
+      const container = document.querySelector(`[data-lang="${sectionLang}"]`);
+      if (!container) return;
+      container.querySelectorAll('[data-price]').forEach(el => {
+        const cop = parseInt(el.dataset.price, 10);
+        const hasPrefix = el.dataset.prefix === 'true';
+        const prefix = hasPrefix ? (sectionLang === 'en' ? 'From ' : 'Desde ') : '';
+        const hadUnit = /unit/.test(el.innerHTML);
+        const unit = hadUnit
+          ? (sectionLang === 'en' ? '<span class="unit"> / mo</span>' : '<span class="unit"> / mes</span>')
+          : '';
+        el.innerHTML = `${prefix}${formatPrice(cop, currency, sectionLang)}${unit}`;
+      });
+    });
+  }
+
+  const currencyButtons = document.querySelectorAll('[data-currency]');
+
+  currencyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currency = btn.dataset.currency;
+      currencyButtons.forEach(b => {
+        const isActive = b.dataset.currency === currency;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      updatePrices(currency);
+      try { localStorage.setItem('currency', currency); } catch (e) {}
+    });
+  });
+
+  // ========== Load saved preferences ==========
+  try {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang === 'en') setLanguage('en');
+    const savedCurrency = localStorage.getItem('currency');
+    if (savedCurrency && savedCurrency !== 'COP') {
+      document.querySelector(`[data-currency="${savedCurrency}"]`).click();
+    }
+  } catch (e) {}
+</script>
+
+</body>
+</html>
