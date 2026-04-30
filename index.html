@@ -402,6 +402,22 @@
 
   ::selection { background: var(--accent); color: var(--bg); }
 
+  /* ---------- Stripe pay button ---------- */
+  .price-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .stripe-link {
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--accent);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+  .stripe-link:hover { color: var(--accent-hover); }
+
   /* ---------- Language visibility ---------- */
   html[lang="es"] [data-lang="en"] { display: none; }
   html[lang="en"] [data-lang="es"] { display: none; }
@@ -420,9 +436,9 @@
         <button class="toggle-btn" data-toggle-lang="en" aria-pressed="false">EN</button>
       </div>
       <div class="toggle-group" role="group" aria-label="Currency">
-        <button class="toggle-btn active" data-currency="COP" aria-pressed="true">COP</button>
+        <button class="toggle-btn" data-currency="COP" aria-pressed="false">COP</button>
         <span class="toggle-sep">·</span>
-        <button class="toggle-btn" data-currency="USD" aria-pressed="false">USD</button>
+        <button class="toggle-btn active" data-currency="USD" aria-pressed="true">USD</button>
         <span class="toggle-sep">·</span>
         <button class="toggle-btn" data-currency="EUR" aria-pressed="false">EUR</button>
       </div>
@@ -436,19 +452,19 @@
   <section class="hero container">
     <div class="hero-eyebrow">Consultoría de IA · 1 a 1</div>
     <h1 class="hero-title">
-      Lo que hoy te toma <span class="accent">horas</span>, mañana te toma <span class="accent">minutos</span>.
+      Lo que hoy te toma <span class="accent">horas</span>, mañana te tomará <span class="accent">minutos</span>.
     </h1>
     <p class="hero-sub">
-      Te guío para usar IA en tu trabajo — a tu ritmo, con tus casos reales, sin preguntas fuera de lugar. Hablamos, escogemos una tarea, la resolvemos juntos.
+      Te guío para usar IA en tu trabajo — a tu ritmo, con tus casos reales, no hay preguntas fuera de lugar. Hablamos, escogemos una tarea, la resolvemos juntos.
     </p>
     <p class="hero-audience">
       Para abogados, terapeutas, consultores y profesionales que quieren resultados concretos, no un curso más.
     </p>
-    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
-      Agendar llamada gratis
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Agendar una sesión
       <span class="arrow">→</span>
     </a>
-    <span class="cta-note">30 minutos, sin compromiso.</span>
+    <span class="cta-note">90 min. Paga y elige tu horario.</span>
   </section>
 
   <section class="container">
@@ -463,7 +479,7 @@
       <div class="example">
         <div class="example-role">Terapeuta</div>
         <div class="example-title">Organizar tus notas de sesión sin comprometer la confidencialidad.</div>
-        <p class="example-desc">Qué opciones son seguras, cómo anonimizar antes de usar IA, y un flujo que te ahorra dos horas semanales.</p>
+        <p class="example-desc">Qué opciones son seguras, cómo anonimizar antes de usar IA, y un flujo que te ahorra horas semanales.</p>
       </div>
       <div class="example">
         <div class="example-role">Consultor</div>
@@ -475,6 +491,11 @@
         <div class="example-title">Analizar un Excel de 5.000 filas sin tablas dinámicas.</div>
         <p class="example-desc">Preguntas en lenguaje normal y obtienes respuestas. Sin fórmulas complicadas.</p>
       </div>
+      <div class="example">
+        <div class="example-role">Uso personal</div>
+        <div class="example-title">Analizar un Excel de 5.000 filas sin tablas dinámicas.</div>
+        <p class="example-desc">Preguntas en lenguaje normal y obtienes respuestas. Sin fórmulas complicadas.</p>
+      </div>  
     </div>
   </section>
 
@@ -496,52 +517,48 @@
 
   <section class="container">
     <div class="section-eyebrow">Precios</div>
-    <h2 class="section-title">Transparente. <em>Sin sorpresas.</em></h2>
+    <h2 class="section-title">Transparentes. <em>Sin sorpresas.</em></h2>
     <div class="pricing-grid">
-      <div class="price-row">
-        <div>
-          <div class="price-name">Llamada diagnóstica</div>
-          <div class="price-desc">30 min. Identificamos tu problema y vemos si puedo ayudarte.</div>
-        </div>
-        <div class="price-amount price-free">Gratis</div>
-      </div>
       <div class="price-row featured">
         <div>
           <div class="price-name">Sesión individual</div>
           <div class="price-desc">90 min. Una tarea concreta, resuelta de principio a fin.</div>
         </div>
-        <div class="price-amount" data-price="280000">280.000 COP</div>
+        <div class="price-right">
+          <div class="price-amount" data-price="280000">70 USD</div>
+          <a href="STRIPE_PAYMENT_LINK_URL" class="stripe-link" target="_blank" rel="noopener">Pagar ahora →</a>
+        </div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Pack inicial</div>
           <div class="price-desc">3 sesiones de 90 min. Para instalar un flujo completo que uses solo.</div>
         </div>
-        <div class="price-amount" data-price="750000">750.000 COP</div>
+        <div class="price-amount" data-price="750000">190 USD</div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Mentoría mensual</div>
           <div class="price-desc">4 sesiones al mes + soporte por WhatsApp.</div>
         </div>
-        <div class="price-amount" data-price="1100000">1.100.000 COP<span class="unit"> / mes</span></div>
+        <div class="price-amount" data-price="1100000">275 USD<span class="unit"> / mes</span></div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Proyecto a medida</div>
           <div class="price-desc">Cotizamos después de la llamada diagnóstica.</div>
         </div>
-        <div class="price-amount" data-price="1500000" data-prefix="true">Desde 1.500.000 COP</div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">Desde 375 USD</div>
       </div>
     </div>
     <p class="price-note">Facturo desde Colombia y Europa.</p>
   </section>
 
   <section class="final-cta container">
-    <h2 class="section-title">La llamada es <em>gratis</em>.</h2>
-    <p class="final-cta-sub">30 minutos, sin compromiso.</p>
-    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
-      Agendar mi llamada
+    <h2 class="section-title">¿Lista para <em>empezar</em>?</h2>
+    <p class="final-cta-sub">Paga tu sesión y elige el horario que mejor te quede.</p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Reservar mi sesión
       <span class="arrow">→</span>
     </a>
   </section>
@@ -562,11 +579,11 @@
     <p class="hero-audience">
       For attorneys, advisors, therapists, and established professionals who want results, not another course.
     </p>
-    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
-      Book a free call
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Book a session
       <span class="arrow">→</span>
     </a>
-    <span class="cta-note">30 minutes. No obligation.</span>
+    <span class="cta-note">90 min. Pay and pick your time slot.</span>
   </section>
 
   <section class="container">
@@ -599,7 +616,7 @@
   <section class="about">
     <div class="about-inner">
       <div class="section-eyebrow">About me</div>
-      <h2 class="section-title">I'm who people call when <em>something's broken</em>.</h2>
+      <h2 class="section-title">I'm who people call when <em>something doesn't work</em>.</h2>
       <div class="about-grid">
         <div class="about-photo">
           <img src="photo.jpg" alt="Gabriela Aljure">
@@ -616,50 +633,46 @@
     <div class="section-eyebrow">Pricing</div>
     <h2 class="section-title">Flat fees. <em>No surprises.</em></h2>
     <div class="pricing-grid">
-      <div class="price-row">
-        <div>
-          <div class="price-name">Discovery call</div>
-          <div class="price-desc">30 min. We identify the problem and decide if I'm the right fit.</div>
-        </div>
-        <div class="price-amount price-free">Free</div>
-      </div>
       <div class="price-row featured">
         <div>
           <div class="price-name">Single session</div>
           <div class="price-desc">90 min. One concrete task, solved end-to-end.</div>
         </div>
-        <div class="price-amount" data-price="280000">280,000 COP</div>
+        <div class="price-right">
+          <div class="price-amount" data-price="280000">70 USD</div>
+          <a href="STRIPE_PAYMENT_LINK_URL" class="stripe-link" target="_blank" rel="noopener">Pay now →</a>
+        </div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Starter package</div>
           <div class="price-desc">3 × 90 min sessions. A complete workflow you can run on your own.</div>
         </div>
-        <div class="price-amount" data-price="750000">750,000 COP</div>
+        <div class="price-amount" data-price="750000">190 USD</div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Monthly retainer</div>
           <div class="price-desc">4 sessions/month plus messaging support between them.</div>
         </div>
-        <div class="price-amount" data-price="1100000">1,100,000 COP<span class="unit"> / mo</span></div>
+        <div class="price-amount" data-price="1100000">275 USD<span class="unit"> / mo</span></div>
       </div>
       <div class="price-row">
         <div>
           <div class="price-name">Custom engagement</div>
           <div class="price-desc">Quoted after the discovery call.</div>
         </div>
-        <div class="price-amount" data-price="1500000" data-prefix="true">From 1,500,000 COP</div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">From 375 USD</div>
       </div>
     </div>
     <p class="price-note">Invoicing available from Colombia and Europe.</p>
   </section>
 
   <section class="final-cta container">
-    <h2 class="section-title">The call is <em>free</em>.</h2>
-    <p class="final-cta-sub">30 minutes. No pressure. If it isn't a fit, I'll say so first.</p>
-    <a href="https://calendly.com/galjure" target="_blank" rel="noopener" class="cta">
-      Book my call
+    <h2 class="section-title">Ready to <em>get started</em>?</h2>
+    <p class="final-cta-sub">Pay for your session and pick a time that works for you.</p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Book my session
       <span class="arrow">→</span>
     </a>
   </section>
@@ -756,9 +769,11 @@
   try {
     const savedLang = localStorage.getItem('lang');
     if (savedLang === 'en') setLanguage('en');
-    const savedCurrency = localStorage.getItem('currency');
-    if (savedCurrency && savedCurrency !== 'COP') {
+    const savedCurrency = localStorage.getItem('currency') || 'USD';
+    if (savedCurrency !== 'USD') {
       document.querySelector(`[data-currency="${savedCurrency}"]`).click();
+    } else {
+      updatePrices('USD');
     }
   } catch (e) {}
 </script>
