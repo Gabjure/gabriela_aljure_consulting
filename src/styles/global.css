@@ -36,13 +36,17 @@ body {
   border-bottom: 1px solid var(--rule);
 }
 .topbar-inner {
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 14px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  flex-wrap: nowrap;
+}
+@media (max-width: 880px) {
+  .topbar-inner { flex-wrap: wrap; row-gap: 8px; }
 }
 .brand {
   font-family: var(--font-serif);
@@ -54,6 +58,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  white-space: nowrap;
 }
 .brand img { width: 26px; height: 26px; display: block; }
 
@@ -62,13 +67,14 @@ body {
   display: flex;
   gap: 18px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .nav a {
   font-size: 14px;
   color: var(--ink-soft);
   text-decoration: none;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav a:hover { color: var(--accent); }
 .nav a.active {
