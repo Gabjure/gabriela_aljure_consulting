@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.galjureconsulting.com/sitemap-index.xml

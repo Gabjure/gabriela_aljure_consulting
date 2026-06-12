@@ -1,0 +1,44 @@
+---
+// Listado del blog — Fase 3. Sin link en el nav hasta tener posts.
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+<Base
+  title="Blog — Gabriela Aljure, Consultoría de IA"
+  description="Conceptos de IA explicados sin jerga, y análisis riguroso de modelos LLM con fuentes citadas."
+  active="/blog/"
+>
+
+<section class="hero container">
+  <div class="hero-eyebrow"><span data-lang="es">Blog</span><span data-lang="en">Blog</span></div>
+  <h1 class="hero-title">
+    <span data-lang="es">IA sin <span class="accent">jerga</span>.</span>
+    <span data-lang="en">AI without the <span class="accent">jargon</span>.</span>
+  </h1>
+</section>
+
+<section class="container" style="padding-top: 0;">
+  <div class="examples-grid">
+    {posts.length === 0 && (
+      <div class="example">
+        <p class="example-desc">
+          <span data-lang="es">Primeros artículos en camino.</span>
+          <span data-lang="en">First articles on their way.</span>
+        </p>
+      </div>
+    )}
+    {posts.map(post => (
+      <div class="example">
+        <div class="example-role">{post.data.pubDate.toISOString().slice(0, 10)}</div>
+        <div class="example-title"><a href={`/blog/${post.id}/`} style="color: inherit; text-decoration: none;">{post.data.title}</a></div>
+        <p class="example-desc">{post.data.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+</Base>

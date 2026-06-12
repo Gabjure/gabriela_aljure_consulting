@@ -1,0 +1,26 @@
+---
+// Página de post individual — Fase 3
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={`${post.data.title} — Gabriela Aljure`} description={post.data.description} active="/blog/">
+
+<article class="container post-content">
+  <section class="hero" style="padding-bottom: 30px;">
+    <div class="hero-eyebrow">{post.data.pubDate.toISOString().slice(0, 10)}</div>
+    <h1 class="section-title" style="font-size: clamp(32px, 4.5vw, 44px);">{post.data.title}</h1>
+    <p class="hero-sub">{post.data.description}</p>
+  </section>
+  <Content />
+  <p style="margin-top: 48px;"><a href="/blog/" class="stripe-link">← Blog</a></p>
+</article>
+
+</Base>
