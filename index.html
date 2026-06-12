@@ -15,19 +15,21 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f3ec;
-    --bg-alt: #efe8dc;
-    --ink: #1a1d1c;
-    --ink-soft: #3d4541;
-    --muted: #6b7470;
-    --accent: #0f4c4c;
-    --accent-hover: #0a3838;
-    --rule: #d9d1c1;
+    /* Paleta de marca — 02_Visual_Style_Guide.md */
+    --bg: #F6F4EE;          /* crema */
+    --bg-alt: #EDE9DE;      /* crema oscurecida (secciones alternas) */
+    --ink: #1e3a5f;         /* navy — titulares y texto principal */
+    --ink-soft: #5a6b63;    /* gris verdoso — texto secundario */
+    --muted: #8a958f;       /* gris claro — footnotes */
+    --accent: #3f6f60;      /* verde de marca */
+    --accent-hover: #2f5448;
+    --rule: #cdd9d3;        /* sage claro — bordes */
     --font-serif: 'Fraunces', Georgia, serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,6 +70,14 @@
     letter-spacing: -0.01em;
     color: var(--ink);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .brand img {
+    width: 26px;
+    height: 26px;
+    display: block;
   }
   .toggles {
     display: flex;
@@ -119,6 +129,7 @@
     padding: 90px 0 70px;
   }
   .hero-eyebrow {
+    font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 500;
     color: var(--accent);
@@ -188,6 +199,7 @@
 
   /* ---------- Sections ---------- */
   .section-eyebrow {
+    font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 500;
     color: var(--accent);
@@ -219,8 +231,9 @@
   }
   .example:last-child { border-bottom: 1px solid var(--rule); }
   .example-role {
+    font-family: var(--font-mono);
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--accent);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -437,7 +450,7 @@
 <!-- ============ TOP BAR ============ -->
 <div class="topbar">
   <div class="topbar-inner">
-    <a href="#" class="brand">Gabriela Aljure</a>
+    <a href="#" class="brand"><img src="logo.svg" alt="" aria-hidden="true">Gabriela Aljure</a>
     <div class="toggles">
       <div class="toggle-group" role="group" aria-label="Language">
         <button class="toggle-btn active" data-toggle-lang="es" aria-pressed="true">ES</button>
@@ -781,6 +794,9 @@
     }
   } catch (e) {}
 </script>
+
+<!-- GoatCounter analytics — sin cookies -->
+<script data-goatcounter="https://gac.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
