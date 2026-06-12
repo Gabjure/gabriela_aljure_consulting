@@ -103,34 +103,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   });
 
   // ========== Currency toggle ==========
-  const rates = { COP: 1, USD: 1 / 4000, EUR: 1 / 4300 };
-  const symbols = { COP: 'COP', USD: 'USD', EUR: 'EUR' };
+  // USD y EUR son precios fijos (los que cobra Stripe). COP es display aproximado.
+  // Actualizar RATE_COP_PER_USD periódicamente (jun 2026: ~3.600).
+  const RATE_COP_PER_USD = 3600;
 
-  function formatPrice(copAmount, currency, lang) {
-    const converted = copAmount * rates[currency];
-    let formatted;
+  function formatPrice(el, currency, lang) {
     const locale = lang === 'es' ? 'es-CO' : 'en-US';
-    if (currency === 'COP') {
-      formatted = Math.round(converted).toLocaleString(locale);
-    } else {
-      const rounded = Math.round(converted / 5) * 5;
-      formatted = rounded.toLocaleString(locale);
-    }
-    return `${formatted} ${symbols[currency]}`;
+    if (currency === 'USD') return `${parseInt(el.dataset.usd, 10).toLocaleString(locale)} USD`;
+    if (currency === 'EUR') return `${parseInt(el.dataset.eur, 10).toLocaleString(locale)} EUR`;
+    const cop = Math.round(parseInt(el.dataset.usd, 10) * RATE_COP_PER_USD / 10000) * 10000;
+    return `${cop.toLocaleString(locale)} COP`;
   }
 
   function updatePrices(currency) {
     ['es', 'en'].forEach(sectionLang => {
       document.querySelectorAll(`[data-lang="${sectionLang}"]`).forEach(container => {
-        container.querySelectorAll('[data-price]').forEach(el => {
-          const cop = parseInt(el.dataset.price, 10);
+        container.querySelectorAll('[data-usd]').forEach(el => {
           const hasPrefix = el.dataset.prefix === 'true';
           const prefix = hasPrefix ? (sectionLang === 'en' ? 'From ' : 'Desde ') : '';
           const hadUnit = /unit/.test(el.innerHTML);
           const unit = hadUnit
             ? (sectionLang === 'en' ? '<span class="unit"> / mo</span>' : '<span class="unit"> / mes</span>')
             : '';
-          el.innerHTML = `${prefix}${formatPrice(cop, currency, sectionLang)}${unit}`;
+          el.innerHTML = `${prefix}${formatPrice(el, currency, sectionLang)}${unit}`;
         });
       });
     });
