@@ -1,5 +1,4 @@
-# Deploy Astro a GitHub Pages
-# Requiere: Settings → Pages → Source = "GitHub Actions" (cambiar al hacer merge a main)
+# Deploy Astro a GitHub Pages — pasos explícitos (Astro 6 requiere Node 22)
 name: Deploy to GitHub Pages
 
 on:
@@ -18,8 +17,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload
-        uses: withastro/action@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
