@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+// Página de booking sin distracciones: un solo objetivo, agendar.
+---
+<Base
+  title="Contacto — Gabriela Aljure, Consultoría de IA"
+  description="Agenda tu sesión de consultoría de IA. 90 minutos, una tarea concreta de tu trabajo, resuelta de principio a fin."
+  active="/contacto/"
+>
+
+<!-- ============ ES ============ -->
+<div data-lang="es">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">Contacto</div>
+    <h1 class="hero-title">¿Lista para <span class="accent">empezar</span>?</h1>
+    <p class="hero-sub">
+      Paga tu sesión y elige el horario que mejor te quede. 90 minutos, una tarea concreta de tu trabajo, resuelta de principio a fin.
+    </p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Reservar mi sesión
+      <span class="arrow">→</span>
+    </a>
+    <span class="cta-note">¿Dudas antes de reservar? Escríbeme por LinkedIn.</span>
+  </section>
+
+</div>
+
+<!-- ============ EN ============ -->
+<div data-lang="en">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">Contact</div>
+    <h1 class="hero-title">Ready to <span class="accent">get started</span>?</h1>
+    <p class="hero-sub">
+      Pay for your session and pick a time that works for you. 90 minutes, one concrete task from your actual work, solved end-to-end.
+    </p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Book my session
+      <span class="arrow">→</span>
+    </a>
+    <span class="cta-note">Questions before booking? Reach me on LinkedIn.</span>
+  </section>
+
+</div>
+
+</Base>

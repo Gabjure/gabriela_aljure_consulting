@@ -1,0 +1,5 @@
+.DS_Store
+.workspace-meta/
+node_modules/
+dist/
+.astro/

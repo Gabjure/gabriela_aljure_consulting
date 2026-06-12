@@ -1,0 +1,182 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Servicios — Gabriela Aljure, Consultoría de IA"
+  description="Sesiones 1 a 1, packs y mentoría mensual de IA para abogados, terapeutas, consultores y profesionales. Precios transparentes, sin sorpresas."
+  active="/servicios/"
+>
+
+<!-- ============ ES ============ -->
+<div data-lang="es">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">Servicios</div>
+    <h1 class="hero-title">Problemas <span class="accent">reales</span>, resueltos contigo.</h1>
+    <p class="hero-sub">
+      Trabajamos sobre una tarea concreta de tu trabajo — tus archivos, tus casos, tus herramientas. Sales de cada sesión con algo funcionando.
+    </p>
+  </section>
+
+  <section class="container" style="padding-top: 0;">
+    <div class="examples-grid">
+      <div class="example">
+        <div class="example-role">Abogado</div>
+        <div class="example-title">Revisar un contrato de 40 páginas en 15 minutos.</div>
+        <p class="example-desc">Qué herramienta usar (y por qué no ChatGPT para esto), cómo proteger los datos del cliente, y cómo obtener un resumen útil que puedas verificar.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Terapeuta</div>
+        <div class="example-title">Organizar tus notas de sesión sin comprometer la confidencialidad.</div>
+        <p class="example-desc">Qué opciones son seguras, cómo anonimizar antes de usar IA, y un flujo que te ahorra horas semanales.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Consultor</div>
+        <div class="example-title">Preparar propuestas a medida sin empezar de cero cada vez.</div>
+        <p class="example-desc">Una plantilla inteligente que se adapta a cada cliente, con tus expresiones y tu tono.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Contador · Administrador</div>
+        <div class="example-title">Analizar un Excel de 5.000 filas sin tablas dinámicas.</div>
+        <p class="example-desc">Preguntas en lenguaje normal y obtienes respuestas. Sin fórmulas complicadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">Precios</div>
+    <h2 class="section-title">Transparentes. <em>Sin sorpresas.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-row featured">
+        <div>
+          <div class="price-name">Sesión individual</div>
+          <div class="price-desc">90 min. Una tarea concreta, resuelta de principio a fin.</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount" data-price="280000">70 USD</div>
+          <a href="STRIPE_PAYMENT_LINK_URL" class="stripe-link" target="_blank" rel="noopener">Pagar ahora →</a>
+        </div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Pack inicial</div>
+          <div class="price-desc">3 sesiones de 90 min. Para instalar un flujo completo que uses solo.</div>
+        </div>
+        <div class="price-amount" data-price="750000">190 USD</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Mentoría mensual</div>
+          <div class="price-desc">4 sesiones al mes + soporte por WhatsApp.</div>
+        </div>
+        <div class="price-amount" data-price="1100000">275 USD<span class="unit"> / mes</span></div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Proyecto a medida</div>
+          <div class="price-desc">Cotizamos después de la llamada diagnóstica.</div>
+        </div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">Desde 375 USD</div>
+      </div>
+    </div>
+    <p class="price-note">Facturo desde Colombia y Europa.</p>
+  </section>
+
+  <section class="final-cta container" style="padding-top: 0;">
+    <h2 class="section-title">¿Lista para <em>empezar</em>?</h2>
+    <p class="final-cta-sub">Paga tu sesión y elige el horario que mejor te quede.</p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Reservar mi sesión
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+</div>
+
+<!-- ============ EN ============ -->
+<div data-lang="en">
+
+  <section class="hero container">
+    <div class="hero-eyebrow">Services</div>
+    <h1 class="hero-title">One <span class="accent">real</span> problem at a time.</h1>
+    <p class="hero-sub">
+      We work on one concrete task from your actual work — your files, your cases, your tools. You leave every session with something working.
+    </p>
+  </section>
+
+  <section class="container" style="padding-top: 0;">
+    <div class="examples-grid">
+      <div class="example">
+        <div class="example-role">Attorneys</div>
+        <div class="example-title">Review a 40-page contract in 15 minutes.</div>
+        <p class="example-desc">Which tool to use, how to handle client confidentiality, and how to get a summary you can actually rely on.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Therapists &amp; clinicians</div>
+        <div class="example-title">Session notes, organized — HIPAA-aware.</div>
+        <p class="example-desc">Which tools meet professional privacy standards, how to de-identify data, and a workflow that saves two hours a week.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Consultants &amp; advisors</div>
+        <div class="example-title">Tailored proposals without starting from scratch.</div>
+        <p class="example-desc">A smart template that adapts to each client, using your voice and your framework — not generic AI boilerplate.</p>
+      </div>
+      <div class="example">
+        <div class="example-role">Finance &amp; operations</div>
+        <div class="example-title">Query a 5,000-row spreadsheet in plain English.</div>
+        <p class="example-desc">Ask questions, spot outliers, generate reports. No pivot tables, no formulas to memorize.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">Flat fees. <em>No surprises.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-row featured">
+        <div>
+          <div class="price-name">Single session</div>
+          <div class="price-desc">90 min. One concrete task, solved end-to-end.</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount" data-price="280000">70 USD</div>
+          <a href="STRIPE_PAYMENT_LINK_URL" class="stripe-link" target="_blank" rel="noopener">Pay now →</a>
+        </div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Starter package</div>
+          <div class="price-desc">3 × 90 min sessions. A complete workflow you can run on your own.</div>
+        </div>
+        <div class="price-amount" data-price="750000">190 USD</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Monthly retainer</div>
+          <div class="price-desc">4 sessions/month plus messaging support between them.</div>
+        </div>
+        <div class="price-amount" data-price="1100000">275 USD<span class="unit"> / mo</span></div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-name">Custom engagement</div>
+          <div class="price-desc">Quoted after the discovery call.</div>
+        </div>
+        <div class="price-amount" data-price="1500000" data-prefix="true">From 375 USD</div>
+      </div>
+    </div>
+    <p class="price-note">Invoicing available from Colombia and Europe.</p>
+  </section>
+
+  <section class="final-cta container" style="padding-top: 0;">
+    <h2 class="section-title">Ready to <em>get started</em>?</h2>
+    <p class="final-cta-sub">Pay for your session and pick a time that works for you.</p>
+    <a href="STRIPE_PAYMENT_LINK_URL" target="_blank" rel="noopener" class="cta">
+      Book my session
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+</div>
+
+</Base>
